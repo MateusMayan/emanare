@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap');
+
+:root {
+  --g1: #f5f5f5;
+  --g2: #e0e0e0;
+  --g3: #cccccc;
+  --g4: #b8b8b8;
+  --g5: #a3a3a3;
+  --g6: #8f8f8f;
+  --g7: #7a7a7a;
+  --g8: #666666;
+  --g9: #525252;
+  --g10: #3d3d3d;
+  --g11: #292929;
+  --g12: #141414;
+
+  --r1: #f1ecfe;
+  --r2: #d2c8f3;
+  --r3: #c6b7f2;
+  --r4: #beadf1;
+  --r5: #a98df7;
+  --r6: #8c66f4;
+  --r7: #772df0;
+  --r8: #520b99;
+  --r9: #31054c;
+
+  --a1: #f8feec;
+  --a2: #ecf6d5;
+  --a3: #e6f6c5;
+  --a4: #e0f4b4;
+  --a5: #e3f9ae;
+  --a6: #d7f68d;
+  --a7: #c9f467;
+  --a8: #b5ef2e;
+  --a9: #89be0e;
+  --gradient: linear-gradient(180deg, #aa9ada 0%, #5c4a90 100%);
+  --w: #fff;
+
+  --font-1-xxl: 700 64px/72px Alegreya, serif;
+  --font-1-xl: 700 32px/40px Alegreya, serif;
+  --font-1-l: 700 24px/36px Alegreya, serif;
+  --font-1-m: 400 18px/24px Alegreya, serif;
+  --font-1-m-b: 600 18px/24px Alegreya, serif;
+  --font-1-s: 400 16px/24px Alegreya, serif;
+  --font-1-xs: 600 12px/16px Alegreya, serif;
+
+  --font-2-l: 400 24px/36px Quicksand, sans-serif;
+  --font-2-l-b: 500 24px/36px Quicksand, sans-serif;
+  --font-2-m: 500 18px/24px Quicksand, sans-serif;
+  --font-2-s: 400 16px/24px Quicksand, sans-serif;
+  --font-2-xs: 400 14px/20px Quicksand, sans-serif;
+}
