@@ -43,7 +43,7 @@ React.useEffect(() => {
 }, [])
 
 
-  return <div style={{font: 'var(--font-2-l-b)'}}> Testando FireStore... </div>
+  return <div style={{font: 'var(--font-1-xs)'}}> Testando FireStore... </div>
 }
 
 export default FireStore

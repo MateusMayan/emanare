@@ -1,6 +1,5 @@
 .header {
   display: flex;
-  width: 1600px;
   padding: 20px 220px;
   justify-content: space-between;
   align-items: center;
@@ -27,4 +26,27 @@
 }
 
 .headerRight {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  font: var(--font-1-m);
+  color: var(--r9);
+}
+
+.headerRightItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ellipse {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  background-color: var(--a5);
+  color: var(--r8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: var(--font-2-xs);
 }
