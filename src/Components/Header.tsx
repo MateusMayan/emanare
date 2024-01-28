@@ -11,9 +11,9 @@ import {ReactComponent as BagSmile} from '../Assets/icons/shopping-bag-smile.svg
 
 const Header = () => {
    const [carrinho, setCarrinho] = React.useState(0)
-
    function handleClick() {
     setCarrinho(carrinho + 1)
+
    }
   return (
     <header className={styles.header}>
@@ -28,7 +28,15 @@ const Header = () => {
       <nav className={styles.headerRight}>
       <div className={styles.headerRightItem}>
         <PatchQuestion/>
-        <p>Atendimentos</p>
+        <p id={styles.atendimentos}>Atendimentos</p>
+          <ul id={styles.infoAtendimento}>
+            <li>Telefone:</li>
+            <li>(71) 98647-9532</li>
+            <li>Whatsapp:</li>
+            <li>(71) 98647-9532</li>
+            <li>E-mail:</li>
+            <li>emanare@gmail.com</li>
+          </ul>
       </div>     
       <div className={styles.headerRightItem}>
         <Heart/>

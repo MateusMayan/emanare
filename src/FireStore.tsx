@@ -1,6 +1,6 @@
 import React from 'react'
-import { db} from './FirebaseConfig'
-import { collection, query, where,getDocs, documentId } from "firebase/firestore";
+import {db} from './FirebaseConfig'
+import {collection, query, where,getDocs, documentId } from "firebase/firestore";
 
 const FireStore = () => {
 const userId = "XgOHnfZOlmkPl6qP5o79"

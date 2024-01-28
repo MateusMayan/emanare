@@ -17,12 +17,15 @@
   gap: 12px;
   border-radius: 5px;
   box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
-  padding: 16px 16px 16px 12px;
+  height: 50px;
+  padding: 0 16px;
 }
 
 .inputPesquisa input {
   border: 0.5px solid var(--w, #fff);
   outline: none;
+  padding: 0;
+  height: 40px;
 }
 
 .headerRight {
@@ -39,6 +42,40 @@
   gap: 8px;
 }
 
+#atendimentos:hover + #infoAtendimento {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#infoAtendimento {
+  padding: 20px;
+}
+#infoAtendimento {
+  display: none;
+  list-style: none;
+  text-align: center;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+  padding: 12px;
+  position: absolute;
+  top: 80px;
+  background-color: var(--a2);
+  font: var(--font-2-xs);
+  border-radius: 5px;
+}
+
+#infoAtendimento li:nth-child(odd) {
+  font-weight: 700;
+}
+
+#infoAtendimento::before {
+  position: absolute;
+  top: -20px;
+  content: '';
+  border: 12px solid transparent;
+  border-bottom-color: var(--a2);
+}
 .ellipse {
   height: 24px;
   width: 24px;
