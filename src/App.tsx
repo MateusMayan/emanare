@@ -1,13 +1,14 @@
 import React from 'react';
 import './App.css';
-import Firestore  from './FireStore';
 import Header from './Components/Header';
+import {UserStorage}  from './UserContext';
 
 function App() {
   return (
     <div className="App">
+      <UserStorage>
       <Header/>
-     <Firestore/>
+     </UserStorage>
     </div>
   );
 }
