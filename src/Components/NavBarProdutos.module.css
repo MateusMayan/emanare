@@ -1,0 +1,21 @@
+.Link {
+  text-decoration: none;
+  color: var(--r9);
+  font: var(--font-2-m);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Link:nth-child(2)::after,
+.Link:nth-child(3)::after,
+.Link:nth-child(5)::after,
+.Link:nth-child(6)::after {
+  content: '';
+  background: url(../Assets/icons/chevron-compact-down.svg);
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  margin: 4px;
+}

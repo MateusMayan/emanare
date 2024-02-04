@@ -18,6 +18,7 @@ const Header = () => {
    console.log(login)
    console.log(pedidos)
    console.log(quantidade)
+   
    return (
     
     <header className={styles.header}>
