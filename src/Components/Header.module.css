@@ -8,7 +8,8 @@
   background: var(--w);
 }
 
-.headerLeft {
+.headerLeft,
+.headerRight {
   display: inline-flex;
   align-items: center;
   gap: 32px;
@@ -32,9 +33,6 @@
 }
 
 .headerRight {
-  display: flex;
-  gap: 32px;
-  align-items: center;
   font: var(--font-1-m);
   color: var(--r9);
 }
@@ -43,7 +41,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 10px;
+  padding: 12px;
 }
 
 .headerRightItem:nth-child(1):hover #infoAtendimento {
@@ -53,10 +51,10 @@
   flex-direction: column;
 }
 
-#infoAtendimento {
+#infoAtendimento,
+#infoConta {
   display: none;
   list-style: none;
-  text-align: center;
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
   padding: 12px;
   position: absolute;
@@ -66,16 +64,18 @@
   border-radius: 5px;
 }
 
-#infoAtendimento li:nth-child(odd) {
-  font-weight: 700;
-}
-
-#infoAtendimento::before {
+#infoAtendimento::before,
+#infoConta::before {
   position: absolute;
   top: -20px;
+  left: 2px;
   content: '';
   border: 12px solid transparent;
   border-bottom-color: var(--a2);
+}
+
+#infoAtendimento li:nth-child(odd) {
+  font-weight: 700;
 }
 
 .headerRightItem:nth-child(3):hover #infoConta {
@@ -87,28 +87,6 @@
 #infoConta li:nth-child(1) {
   font-weight: 700;
   margin-bottom: 8px;
-}
-
-#infoConta {
-  display: none;
-  list-style: none;
-  text-align: left;
-  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
-  padding: 12px;
-  position: absolute;
-  top: 90px;
-  background-color: var(--a2);
-  font: var(--font-2-xs);
-  border-radius: 5px;
-}
-
-#infoConta::before {
-  position: absolute;
-  top: -20px;
-  right: 100px;
-  content: '';
-  border: 12px solid transparent;
-  border-bottom-color: var(--a2);
 }
 
 #infoConta span {
