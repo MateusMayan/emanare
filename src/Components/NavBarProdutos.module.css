@@ -3,19 +3,107 @@
   color: var(--r9);
   font: var(--font-2-m);
   text-transform: uppercase;
+}
+
+.Link:hover {
+  color: var(--r7);
+}
+
+.LinkSecundario {
+  text-decoration: none;
+  color: var(--r9);
+  font: var(--font-2-s);
+}
+
+.LinkSecundario:hover {
+  text-decoration: underline;
+}
+
+#Signos,
+#Acessorios,
+#PedrasNaturais,
+#OQueDeseja {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 4px;
 }
 
-.Link:nth-child(2)::after,
-.Link:nth-child(3)::after,
-.Link:nth-child(5)::after,
-.Link:nth-child(6)::after {
+#Signos:hover #Signos::after,
+#Acessorios:hover #Acessorios::after,
+#PedrasNaturais:hover #PedrasNaturais::after,
+#OQueDeseja:hover #OQueDeseja::after {
+  background: aqua;
+}
+
+#Signos::after,
+#Acessorios::after,
+#PedrasNaturais::after,
+#OQueDeseja::after {
   content: '';
   background: url(../Assets/icons/chevron-compact-down.svg);
   width: 16px;
   height: 16px;
-  display: inline-flex;
-  margin: 4px;
+  display: flex;
+  margin-left: 4px;
+}
+
+#infoSignos,
+#infoAcessorios,
+#infoPedrasNaturais,
+#infoOQueDeseja {
+  display: none;
+  list-style: none;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+  padding: 20px;
+  position: absolute;
+  top: 196px;
+  background-color: var(--a2);
+  font: var(--font-2-xs);
+  border-radius: 5px;
+  overflow-y: auto;
+  height: 150px;
+}
+
+#infoSignos {
+  padding-top: 150px;
+}
+
+#infoAcessorios {
+  padding-top: 100px;
+}
+
+#infoPedrasNaturais {
+  padding-top: 150px;
+}
+
+#infoOQueDeseja {
+  padding-top: 130px;
+}
+
+#infoSignos::-webkit-scrollbar,
+#infoAcessorios::-webkit-scrollbar,
+#infoPedrasNaturais::-webkit-scrollbar,
+#infoOQueDeseja::-webkit-scrollbar {
+  display: block;
+  width: 4px;
+  background-color: var(--a7);
+  border-radius: 5px;
+}
+
+#infoSignos::-webkit-scrollbar-thumb,
+#infoAcessorios::-webkit-scrollbar-thumb,
+#infoPedrasNaturais::-webkit-scrollbar-thumb,
+#infoOQueDeseja::-webkit-scrollbar-thumb {
+  background-color: var(--r9);
+  border-radius: 5px;
+}
+
+#Signos:hover #infoSignos,
+#Acessorios:hover #infoAcessorios,
+#PedrasNaturais:hover #infoPedrasNaturais,
+#OQueDeseja:hover #infoOQueDeseja {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

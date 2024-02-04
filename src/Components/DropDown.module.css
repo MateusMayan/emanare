@@ -1,0 +1,21 @@
+#dropDown {
+  display: none;
+  list-style: none;
+  text-align: left;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+  padding: 12px;
+  position: absolute;
+  top: 90px;
+  background-color: var(--a2);
+  font: var(--font-2-xs);
+  border-radius: 5px;
+}
+
+#dropDown::before {
+  position: absolute;
+  top: -20px;
+  right: 100px;
+  content: '';
+  border: 12px solid transparent;
+  border-bottom-color: var(--a2);
+}
