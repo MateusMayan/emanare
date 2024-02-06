@@ -6,6 +6,7 @@
   position: sticky;
   top: 0;
   background: var(--w);
+  z-index: 1000;
 }
 
 .headerLeft,
@@ -30,6 +31,10 @@
   outline: none;
   padding: 0;
   height: 40px;
+}
+
+.inputPesquisa input::placeholder {
+  font-size: 12px;
 }
 
 .headerRight {
