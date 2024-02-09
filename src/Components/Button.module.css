@@ -1,0 +1,22 @@
+.button {
+  font: var(--font-2-xs);
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background: var(--a5);
+  color: var(--r9);
+  padding: 8px 4px;
+  box-sizing: border-box;
+  transition: 1s;
+}
+
+.button:hover,
+.button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--a6), 0 0 0 4px var(--a7);
+}
+
+.button:disabled {
+  background-color: var(--a1);
+  cursor: auto;
+}

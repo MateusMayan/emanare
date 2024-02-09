@@ -1,0 +1,20 @@
+.diferencial {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+.diferencialInfos p {
+  font: var(--font-2-xs);
+  color: var(--g9);
+}
+
+.diferencialInfos h3 {
+  font: var(--font-1-l);
+  color: var(--r8);
+}
+
+.diferencialIcons {
+  height: 60px;
+}

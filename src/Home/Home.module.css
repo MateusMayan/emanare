@@ -7,32 +7,12 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  gap: 40px;
+  gap: 32px;
   padding: 20px 32px;
   margin: auto;
 }
 
-.diferencial {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  justify-content: center;
-}
-
-.diferencialInfos p {
-  font: var(--font-2-xs);
-  color: var(--g9);
-}
-
-.diferenciais:nth-child(3) {
-  width: 300px;
-}
-
-.diferencialInfos h3 {
-  font: var(--font-1-l);
-  color: var(--r8);
-}
-
-.diferencialIcons {
-  height: 60px;
+.diferenciais svg {
+  height: 60px !important;
+  min-width: 60px;
 }

@@ -1,9 +1,10 @@
 import React from 'react';
 import Carousel from './Carousel';
-import styles from './Home.module.css';
 import { ReactComponent as Crystal } from '../Assets/images/Cristais.svg';
 import { ReactComponent as Truck } from '../Assets/images/Entrega Rápida.svg';
 import { ReactComponent as Hands } from '../Assets/images/Cuidado Especial.svg';
+import Diferencial from '../Components/Diferencial';
+import styles from './Home.module.css';
 
 const Home = () => {
   const slides = [
@@ -29,38 +30,31 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <Carousel slides={slides} />
+
       <div className={styles.diferenciais}>
-        <div className={styles.diferencial}>
-          <Crystal className={styles.diferencialIcons} />
-          <div className={styles.diferencialInfos}>
-            <h3>Pedras Autênticas</h3>
-            <p>
-              Cristais 100% naturais,
-              <br /> sem queima ou tingimento
-            </p>
-          </div>
-        </div>
+        <Diferencial
+          style={{ width: '260px', height: '60px' }}
+          titulo="Pedras Autênticas"
+          descricao={`Cristais 100% naturais, sem queima ou tingimento`}
+        >
+          <Crystal />
+        </Diferencial>
 
-        <div className={styles.diferencial}>
-          <Truck className={styles.diferencialIcons} />
-          <div className={styles.diferencialInfos}>
-            <h3>Entrega Rápida</h3>
-            <p>
-              Postagem realizada em <br /> até 48hrs
-            </p>
-          </div>
-        </div>
+        <Diferencial
+          style={{ width: '250px', height: '60px' }}
+          titulo="Entrega Rápida"
+          descricao={`Postagem realizada em até 48hrs`}
+        >
+          <Truck />
+        </Diferencial>
 
-        <div className={styles.diferencial}>
-          <Hands className={styles.diferencialIcons} />
-          <div className={styles.diferencialInfos}>
-            <h3>Cuidado Especial</h3>
-            <p>
-              Selecionados com atenção especial para <br /> zelar pela sua
-              energia de forma carinhosa.
-            </p>
-          </div>
-        </div>
+        <Diferencial
+          style={{ width: '350px', height: '60px' }}
+          titulo="Cuidado Especial"
+          descricao={`Selecionados com atenção especial para zelar pela sua energia de forma carinhosa.`}
+        >
+          <Hands />
+        </Diferencial>
       </div>
     </div>
   );
