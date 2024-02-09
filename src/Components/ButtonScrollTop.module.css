@@ -10,8 +10,36 @@
   position: fixed;
   top: 600px;
   right: 120px;
-  border: 1px solid var(--r9);
+  border: 0;
   cursor: pointer;
+  background: var(--w);
+}
+
+.Button:before {
+  content: '';
+  background: var(--gradient);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -2;
+  border-radius: 50%;
+  width: 102%;
+  height: 102%;
+}
+
+.Button:after {
+  content: '';
+  background: #fff;
+  top: 2px;
+  bottom: 1px;
+  left: 2.5px;
+  right: 1px;
+  position: absolute;
+  border-radius: 8px;
+  z-index: -1;
+  border-radius: 50%;
 }
 
 .Button svg {

@@ -13,6 +13,25 @@
 }
 
 .diferenciais svg {
-  height: 60px !important;
+  height: 60px;
   min-width: 60px;
+}
+
+.itensMaisVendidos {
+  display: flex;
+  gap: 80px;
+  margin: 32px;
+}
+
+.itensMaisVendidos a {
+  width: 380px;
+  height: 200px;
+  background: var(--r1);
+  display: flex;
+  text-decoration: none;
+  color: var(--r7);
+  font: var(--font-1-xl);
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
 }

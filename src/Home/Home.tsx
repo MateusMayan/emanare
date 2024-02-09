@@ -3,8 +3,9 @@ import Carousel from './Carousel';
 import { ReactComponent as Crystal } from '../Assets/images/Cristais.svg';
 import { ReactComponent as Truck } from '../Assets/images/Entrega Rápida.svg';
 import { ReactComponent as Hands } from '../Assets/images/Cuidado Especial.svg';
-import Diferencial from '../Components/Diferencial';
+import Diferencial from './Diferencial';
 import styles from './Home.module.css';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const slides = [
@@ -30,7 +31,6 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <Carousel slides={slides} />
-
       <div className={styles.diferenciais}>
         <Diferencial
           style={{ width: '260px', height: '60px' }}
@@ -55,6 +55,11 @@ const Home = () => {
         >
           <Hands />
         </Diferencial>
+      </div>
+      <div className={styles.itensMaisVendidos}>
+        <Link to="/produtos/kits">Kits Energéticos</Link>
+        <Link to="/produtos/acessorios/pulseiras">Pulseiras</Link>
+        <Link to="/produtos/pedras-naturais">Pedras Naturais</Link>
       </div>
     </div>
   );
