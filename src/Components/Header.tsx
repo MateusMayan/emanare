@@ -22,7 +22,9 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.headerLeft}>
-        <Logo />
+        <Link to="/">
+          <Logo />
+        </Link>
         <div className={styles.inputPesquisa}>
           <input type="text" placeholder="Olá, o que está procurando hoje?" />
           <Search />
