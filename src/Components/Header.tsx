@@ -7,16 +7,17 @@ import { ReactComponent as Heart } from '../Assets/icons/suit-heart.svg';
 import { ReactComponent as Account } from '../Assets/icons/single-neutral-actions.svg';
 import { ReactComponent as BagSad } from '../Assets/icons/shopping-bag-sad.svg';
 import { ReactComponent as BagSmile } from '../Assets/icons/shopping-bag-smile.svg';
-import { UserContext } from '../UserContext';
+import { UserContext } from '../contexts/UserContext';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
-  const { docId, uId, login, pedidos, quantidade } = useContext(UserContext);
+  const { docId, uId, login, pedidos, amount } = useContext(UserContext);
 
   console.log(uId);
   console.log(docId);
   console.log(login);
   console.log(pedidos);
-  console.log(quantidade);
+  console.log(amount);
 
   return (
     <header className={styles.header}>
@@ -34,11 +35,15 @@ const Header = () => {
           <p id={styles.atendimentos}>Atendimentos</p>
           <ul id={styles.infoAtendimento}>
             <li>Telefone:</li>
-            <li>(71) 98647-9532</li>
+            <Link to="tel:+5571986479532">(71) 9740-6285</Link>
             <li>Whatsapp:</li>
-            <li>(71) 98647-9532</li>
+            <Link to="https://wa.me/message/MHZETPHCJYARJ1" target="blank">
+              (71) 9740-6285
+            </Link>
             <li>E-mail:</li>
-            <li>emanare@gmail.com</li>
+            <Link to="mailto:lojaemanarecristais@gmail.com">
+              lojaemanarecristais@gmail.com
+            </Link>
           </ul>
         </div>
         <div className={styles.headerRightItem}>
@@ -50,17 +55,17 @@ const Header = () => {
           <p id={styles.minhaConta}>Minha Conta</p>
           <ul id={styles.infoConta}>
             {login ? <li>Olá, {login.nome}</li> : <li>Olá, Visitante</li>}
-            <li>Meus Pedidos</li>
-            <li>Acompanhar Pedido</li>
-            <li>Entrar</li>
-            <li>
-              Novo Aqui? <span>Cadastre-se</span>
-            </li>
+            <Link to="/conta/pedidos/">Meus Pedidos</Link>
+            <Link to="/conta/pedidos-modal">Acompanhar Pedido</Link>
+            {login ? null : <Link to="/conta/login">Entrar</Link>}
+            {login ? null : (
+              <Link to="/conta/login">Novo aqui? Cadastre-se</Link>
+            )}
           </ul>
         </div>
         <div className={styles.headerRightItem}>
-          {quantidade <= 0 ? <BagSad /> : <BagSmile />}
-          <div className={styles.ellipse}>{quantidade}</div>
+          {amount && amount <= 0 ? <BagSad /> : <BagSmile />}
+          <div className={styles.ellipse}>{amount}</div>
         </div>
       </nav>
     </header>

@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Header from './Components/Header';
-import { UserStorage } from './UserContext';
+import { UserStorage } from './contexts/UserContext';
 import NavBarProdutos from './Components/NavBarProdutos';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import PromoBar from './Components/PromoBar';

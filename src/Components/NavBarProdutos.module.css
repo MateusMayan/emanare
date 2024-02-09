@@ -16,7 +16,9 @@
 }
 
 .LinkSecundario:hover {
-  text-decoration: underline;
+  background-color: var(--r1);
+  cursor: pointer;
+  font-weight: 600;
 }
 
 #Signos,
