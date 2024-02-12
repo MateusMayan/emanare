@@ -30,11 +30,11 @@ export const UserStorage: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [docId, setDocId] = useState<string | null>(null);
   const [uId, setUId] = useState<string | null>(null);
-  const [login, setLogin] = useState<any>(null); // Defina o tipo correto para login
-  const [pedidos, setPedidos] = useState<any>(null); // Defina o tipo correto para pedidos
+  const [login, setLogin] = useState<any>(null);
+  const [pedidos, setPedidos] = useState<any>(null);
   const [amount, setAmount] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null); // Defina o tipo da variável error como string | null
+  const [error, setError] = useState<string | null>(null);
 
   const fazerLogin = async () => {
     try {
@@ -45,10 +45,9 @@ export const UserStorage: React.FC<{ children: ReactNode }> = ({
       );
       const user = userCredential.user;
       if (user) {
-        setUId(user.uid); // Atualize a variável de estado apenas se o usuário for válido
+        setUId(user.uid);
       }
     } catch (error: any) {
-      // Trate o erro como do tipo any para evitar erros de compilação
       console.error('Error during login:', error.message);
       setError(error.message);
     } finally {
