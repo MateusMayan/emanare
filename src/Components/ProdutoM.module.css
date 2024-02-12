@@ -27,6 +27,7 @@
   border-radius: 5px;
   background: var(--w);
   text-align: center;
+  text-decoration: none;
 }
 
 .ProdutoMImagem {
