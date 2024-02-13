@@ -1,4 +1,10 @@
-import React, { useEffect, useState, createContext, ReactNode } from 'react';
+import React, {
+  useEffect,
+  useState,
+  createContext,
+  ReactNode,
+  useContext,
+} from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from '../FirebaseConfig';
 import { collection, getDocs, query, where } from 'firebase/firestore';
@@ -8,18 +14,18 @@ interface UserContextType {
   uId: string | null;
   login: any; // Você deve definir o tipo correto para login
   pedidos: any; // Você deve definir o tipo correto para pedidos
-  amount: number | null;
   loading: boolean | null;
   error: string | null;
   children: ReactNode | null; // Adicione a propriedade children ao tipo do contexto
 }
+
+export const useUser = () => useContext(UserContext);
 
 export const UserContext = createContext<UserContextType>({
   docId: null,
   uId: null,
   login: null,
   pedidos: null,
-  amount: 0,
   loading: false,
   error: null,
   children: null,
@@ -32,7 +38,6 @@ export const UserStorage: React.FC<{ children: ReactNode }> = ({
   const [uId, setUId] = useState<string | null>(null);
   const [login, setLogin] = useState<any>(null);
   const [pedidos, setPedidos] = useState<any>(null);
-  const [amount, setAmount] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -76,14 +81,11 @@ export const UserStorage: React.FC<{ children: ReactNode }> = ({
       querySnapshot.forEach(async (doc) => {
         if (doc.data().idCliente.id === docId) {
           setPedidos(doc.data());
-          doc.data().itens.map((item: any) => {
-            return setAmount(item.quantidade);
-          });
         }
       });
     };
     getRequestInfo();
-  }, [login, docId, amount]);
+  }, [login, docId]);
 
   useEffect(() => {
     fazerLogin();
@@ -96,7 +98,6 @@ export const UserStorage: React.FC<{ children: ReactNode }> = ({
         uId,
         login,
         pedidos,
-        amount,
         loading,
         error,
         children,

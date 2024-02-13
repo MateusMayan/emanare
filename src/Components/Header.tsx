@@ -1,4 +1,3 @@
-import { useContext } from 'react';
 import styles from './Header.module.css';
 import { ReactComponent as Logo } from '../Assets/images/Logo.svg';
 import { ReactComponent as Search } from '../Assets/icons/search.svg';
@@ -7,17 +6,21 @@ import { ReactComponent as Heart } from '../Assets/icons/suit-heart.svg';
 import { ReactComponent as Account } from '../Assets/icons/single-neutral-actions.svg';
 import { ReactComponent as BagSad } from '../Assets/icons/shopping-bag-sad.svg';
 import { ReactComponent as BagSmile } from '../Assets/icons/shopping-bag-smile.svg';
-import { UserContext } from '../contexts/UserContext';
+import { useUser } from '../contexts/UserContext';
 import { Link } from 'react-router-dom';
+import { useCart } from '../contexts/CartContext';
 
 const Header = () => {
-  const { docId, uId, login, pedidos, amount } = useContext(UserContext);
+  const { cart } = useCart();
+  const { docId, uId, login, pedidos } = useUser();
 
   console.log(uId);
   console.log(docId);
   console.log(login);
   console.log(pedidos);
-  console.log(amount);
+  console.log(cart);
+
+  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <header className={styles.header}>
@@ -66,8 +69,8 @@ const Header = () => {
           </ul>
         </div>
         <div className={styles.headerRightItem}>
-          {amount && amount <= 0 ? <BagSad /> : <BagSmile />}
-          <div className={styles.ellipse}>{amount}</div>
+          {totalItems <= 0 ? <BagSad /> : <BagSmile />}
+          <div className={styles.ellipse}>{totalItems}</div>
         </div>
       </nav>
     </header>
