@@ -27,13 +27,13 @@ export const CartProvider: React.FC<React.PropsWithChildren<{}>> = ({
     const existingItemIndex = updatedCart.findIndex(
       (item) => item.productId === productId,
     );
-
-    if (existingItemIndex !== -1) {
-      updatedCart[existingItemIndex].quantity += quantity;
-    } else {
-      updatedCart.push({ productId, quantity });
+    if (quantity > 0) {
+      if (existingItemIndex !== -1) {
+        updatedCart[existingItemIndex].quantity += quantity;
+      } else {
+        updatedCart.push({ productId, quantity });
+      }
     }
-
     setCart(updatedCart);
   };
 
