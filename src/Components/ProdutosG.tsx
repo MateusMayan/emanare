@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styles from './ProdutoM.module.css';
+import styles from './ProdutoG.module.css';
 import {
   WhereFilterOp,
   collection,
@@ -18,20 +18,21 @@ interface Product {
   description: string | null;
   amount: number | null;
   categoria: string | null;
+  desconto: number | null;
   [prop: string]: any;
 }
 
-interface ProdutosMProps {
+interface ProdutosGProps {
   titulo: string;
   quantidade: number;
   buscaPor?: {
     docProp: string;
     op: WhereFilterOp;
-    docQuery: string;
+    docQuery: string | number;
   };
 }
 
-const ProdutosM: React.FC<ProdutosMProps> = ({
+const ProdutosG: React.FC<ProdutosGProps> = ({
   titulo,
   quantidade,
   buscaPor,
@@ -67,7 +68,6 @@ const ProdutosM: React.FC<ProdutosMProps> = ({
     const fetchProducts = async () => {
       const estoqueRef = collection(db, 'estoque');
       const fetchedProducts: Product[] = [];
-      // Quando houver a propriedade de busca
       if (buscaPor) {
         const querySnapshot = await getDocs(
           query(
@@ -88,8 +88,7 @@ const ProdutosM: React.FC<ProdutosMProps> = ({
           });
         });
         setProducts(fetchedProducts.slice(0, quantidade));
-      } //Quando buscar em todo estoque
-      else {
+      } else {
         const querySnapshot = await getDocs(query(estoqueRef));
         querySnapshot.forEach((doc) => {
           const data = doc.data();
@@ -112,7 +111,6 @@ const ProdutosM: React.FC<ProdutosMProps> = ({
 
   return (
     <CartProvider>
-      {' '}
       <div className={styles.Container}>
         <h3 className={styles.titleSection}>{titulo}</h3>
         <div className={styles.Produtos}>
@@ -120,10 +118,10 @@ const ProdutosM: React.FC<ProdutosMProps> = ({
             <div key={product.id} className={styles.product}>
               <Link
                 to={`/produtos/pulseiras/${product.id}`}
-                className={styles.ProdutoM}
+                className={styles.ProdutoG}
               >
-                <div className={styles.ProdutoMImagem}></div>
-                <div className={styles.ProdutoMInfos}>
+                <div className={styles.ProdutoGImagem}></div>
+                <div className={styles.ProdutoGInfos}>
                   <p>{product.name}</p>
                   {product.desconto && product.desconto > 0 ? (
                     <div className={styles.desconto}>
@@ -139,6 +137,31 @@ const ProdutosM: React.FC<ProdutosMProps> = ({
                     <p
                       className={styles.priceOriginal}
                     >{`R$ ${product.price}`}</p>
+                  )}
+
+                  {product.desconto && product.desconto > 0 ? (
+                    <div className={styles.parcela}>
+                      em até <b>3x</b> de{' '}
+                      <b>
+                        R${' '}
+                        {product.desconto &&
+                          product.price &&
+                          parseFloat(
+                            (
+                              (product.price -
+                                (product.price * product.desconto) / 100) /
+                              3
+                            ).toFixed(2),
+                          )}
+                      </b>
+                    </div>
+                  ) : (
+                    <span className={styles.parcela}>
+                      em até <b>3x</b> de{' '}
+                      <b>
+                        R$ {product.price && (product.price / 3).toFixed(2)}
+                      </b>
+                    </span>
                   )}
                 </div>
               </Link>
@@ -183,4 +206,4 @@ const ProdutosM: React.FC<ProdutosMProps> = ({
   );
 };
 
-export default ProdutosM;
+export default ProdutosG;
