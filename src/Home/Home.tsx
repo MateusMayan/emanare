@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Carousel from './Carousel';
 import { ReactComponent as Crystal } from '../Assets/images/Cristais.svg';
 import { ReactComponent as Truck } from '../Assets/images/Entrega Rápida.svg';
@@ -7,6 +7,7 @@ import Diferencial from './Diferencial';
 import styles from './Home.module.css';
 import { Link } from 'react-router-dom';
 import ProdutosM from '../Components/ProdutosM';
+import ProdutosG from '../Components/ProdutosG';
 
 const Home = () => {
   const slides = [
@@ -62,7 +63,16 @@ const Home = () => {
         <Link to="/produtos/acessorios/pulseiras">Pulseiras</Link>
         <Link to="/produtos/pedras-naturais">Pedras Naturais</Link>
       </div>
-      <ProdutosM titulo="Destaques" quantidade={4} />
+      <ProdutosM
+        titulo="Destaques"
+        quantidade={4}
+        buscaPor={{ docProp: 'categoria', op: '==', docQuery: 'pulseira' }}
+      />
+      <ProdutosG
+        titulo="Promoções"
+        quantidade={10}
+        buscaPor={{ docProp: 'desconto', op: '>=', docQuery: 0 }}
+      />
     </div>
   );
 };
