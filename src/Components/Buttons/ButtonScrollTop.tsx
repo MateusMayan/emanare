@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactComponent as ScrollTop } from '../Assets/icons/scrollTop.svg';
+import { ReactComponent as ScrollTop } from '../../Assets/icons/scrollTop.svg';
 import styles from './ButtonScrollTop.module.css';
 
 const ButtonScrollTop = () => {

@@ -7,9 +7,9 @@ import {
   query,
   where,
 } from 'firebase/firestore';
-import { db } from '../FirebaseConfig';
+import { db } from '../../FirebaseConfig';
 import { Link } from 'react-router-dom';
-import { CartProvider, useCart } from '../contexts/CartContext';
+import { CartProvider, useCart } from '../../contexts/CartContext';
 
 interface Product {
   id: string | null;

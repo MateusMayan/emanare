@@ -43,7 +43,7 @@
 #PedrasNaturais::after,
 #OQueDeseja::after {
   content: '';
-  background: url(../Assets/icons/chevron-compact-down.svg);
+  background: url(../../Assets/icons/chevron-compact-down.svg);
   width: 16px;
   height: 16px;
   display: flex;

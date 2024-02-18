@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-import Header from './Components/Header';
+import Header from './Components/TopPage/Header';
 import { UserStorage } from './contexts/UserContext';
-import NavBarProdutos from './Components/NavBarProdutos';
+import NavBarProdutos from './Components/TopPage/NavBarProdutos';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import PromoBar from './Components/PromoBar';
+import PromoBar from './Components/TopPage/PromoBar';
 import Home from './Home/Home';
-import ButtonWhatsapp from './Components/ButtonWhatsapp';
-import ButtonScrollTop from './Components/ButtonScrollTop';
+import ButtonWhatsapp from './Components/Buttons/ButtonWhatsapp';
+import ButtonScrollTop from './Components/Buttons/ButtonScrollTop';
 import { CartProvider } from './contexts/CartContext';
 
 function App() {
