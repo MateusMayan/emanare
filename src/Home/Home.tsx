@@ -6,8 +6,8 @@ import { ReactComponent as Hands } from '../Assets/images/Cuidado Especial.svg';
 import Diferencial from './Diferencial';
 import styles from './Home.module.css';
 import { Link } from 'react-router-dom';
-import ProdutosM from '../Components/ProdutosM';
-import ProdutosG from '../Components/ProdutosG';
+import ProdutosM from '../Components/ProductsComponents/ProdutosM';
+import ProdutosG from '../Components/ProductsComponents/ProdutosG';
 
 const Home = () => {
   const slides = [

@@ -1,14 +1,14 @@
 import styles from './Header.module.css';
-import { ReactComponent as Logo } from '../Assets/images/Logo.svg';
-import { ReactComponent as Search } from '../Assets/icons/search.svg';
-import { ReactComponent as PatchQuestion } from '../Assets/icons/patch-question.svg';
-import { ReactComponent as Heart } from '../Assets/icons/suit-heart.svg';
-import { ReactComponent as Account } from '../Assets/icons/single-neutral-actions.svg';
-import { ReactComponent as BagSad } from '../Assets/icons/shopping-bag-sad.svg';
-import { ReactComponent as BagSmile } from '../Assets/icons/shopping-bag-smile.svg';
-import { useUser } from '../contexts/UserContext';
+import { ReactComponent as Logo } from '../../Assets/images/Logo.svg';
+import { ReactComponent as Search } from '../../Assets/icons/search.svg';
+import { ReactComponent as PatchQuestion } from '../../Assets/icons/patch-question.svg';
+import { ReactComponent as Heart } from '../../Assets/icons/suit-heart.svg';
+import { ReactComponent as Account } from '../../Assets/icons/single-neutral-actions.svg';
+import { ReactComponent as BagSad } from '../../Assets/icons/shopping-bag-sad.svg';
+import { ReactComponent as BagSmile } from '../../Assets/icons/shopping-bag-smile.svg';
+import { useUser } from '../../contexts/UserContext';
 import { Link } from 'react-router-dom';
-import { useCart } from '../contexts/CartContext';
+import { useCart } from '../../contexts/CartContext';
 
 const Header = () => {
   const { cart } = useCart();

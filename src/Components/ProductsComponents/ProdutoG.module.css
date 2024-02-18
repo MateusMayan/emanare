@@ -137,11 +137,11 @@
 .Produtos::-webkit-scrollbar {
   display: block;
   height: 12px;
-  background-color: var(--a7);
+  background-color: var(--a5);
   border-radius: 3px;
 }
 
 .Produtos::-webkit-scrollbar-thumb {
-  background-color: var(--r9);
+  background-color: var(--r5);
   border-radius: 5px;
 }
