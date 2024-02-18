@@ -22,3 +22,34 @@
 .Container h3 span {
   color: var(--r6);
 }
+
+.Depoimentos {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.Depoimento {
+  width: 420px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--r1);
+  border-radius: 10px;
+  box-shadow: 0 2px 4px 0 #00000020, -2px -2px 5px 0 #00000010;
+}
+
+.Depoimento h1 {
+  font: var(--font-1-l);
+  color: var(--r9);
+}
+
+.Depoimento h2 {
+  font: var(--font-2-m);
+  color: var(--r9);
+}
+
+.DescDepoimento {
+  font: var(--font-2-s);
+}
