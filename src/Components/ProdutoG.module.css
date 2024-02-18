@@ -44,7 +44,7 @@
 .ProdutoGInfos {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 4px;
   padding: 20px;
   font: var(--font-2-m);
   color: var(--g10);
