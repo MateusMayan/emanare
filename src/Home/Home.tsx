@@ -8,6 +8,7 @@ import styles from './Home.module.css';
 import { Link } from 'react-router-dom';
 import ProdutosM from '../Components/ProductsComponents/ProdutosM';
 import ProdutosG from '../Components/ProductsComponents/ProdutosG';
+import Depoimentos from './Testimonials';
 
 const Home = () => {
   const slides = [
@@ -73,6 +74,7 @@ const Home = () => {
         quantidade={10}
         buscaPor={{ docProp: 'desconto', op: '>=', docQuery: 0 }}
       />
+      <Depoimentos />
     </div>
   );
 };

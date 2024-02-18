@@ -22,6 +22,7 @@ interface Product {
   [prop: string]: any;
 }
 
+//Props do Component
 interface ProdutosGProps {
   titulo: string;
   quantidade: number;
