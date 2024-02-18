@@ -8,7 +8,7 @@ import styles from './Home.module.css';
 import { Link } from 'react-router-dom';
 import ProdutosM from '../Components/ProductsComponents/ProdutosM';
 import ProdutosG from '../Components/ProductsComponents/ProdutosG';
-import Depoimentos from './Depoimentos';
+import Depoimentos from './Testimonials';
 
 const Home = () => {
   const slides = [

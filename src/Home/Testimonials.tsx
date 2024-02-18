@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styles from './Depoimentos.module.css';
+import styles from './Testimonials.module.css';
 import { ReactComponent as Heart } from '../Assets/icons/chat-heart 1.svg';
 import { ReactComponent as Star1 } from '../Assets/icons/star-fill 2.svg';
 import {
@@ -14,7 +14,7 @@ import { db } from '../FirebaseConfig';
 
 interface Depoimento {
   idDocumento: string;
-  nota: number;
+  score: number;
   descricao: string;
   nomeCliente: string;
   estadoCliente: string;
@@ -22,15 +22,15 @@ interface Depoimento {
   [prop: string]: any;
 }
 
-const Depoimentos = () => {
-  const [depoimentos, setDepoimentos] = useState<Depoimento[]>([]);
+const Testimonials = () => {
+  const [depoimentos, setTestimonials] = useState<Depoimento[]>([]);
 
   useEffect(() => {
-    const fetchDepoimentos = async () => {
+    const fetchTestimonials = async () => {
       const PedidosRef = collection(db, 'pedidos');
       const query1 = query(PedidosRef, where('depoimento', '!=', null));
       const querySnapshot = await getDocs(query1);
-      const fetchedDepoimentos = await Promise.all(
+      const fetchedTestimonials = await Promise.all(
         querySnapshot.docs.map(async (document) => {
           const depoimentoData = document.data().depoimento;
           const idCliente = document.data().idCliente.id;
@@ -41,7 +41,7 @@ const Depoimentos = () => {
               if (data) {
                 return {
                   idDocumento: document.id,
-                  nota: depoimentoData.nota,
+                  score: depoimentoData.nota,
                   descricao: depoimentoData.descricao,
                   nomeCliente: data.nome,
                   estadoCliente: data.endereco.estado,
@@ -53,34 +53,34 @@ const Depoimentos = () => {
           return null;
         }),
       );
-      const depoimentosValidos = fetchedDepoimentos.filter(
+      const depoimentosValidos = fetchedTestimonials.filter(
         (depoimento) => depoimento !== null,
       ) as Depoimento[];
-      setDepoimentos(depoimentosValidos.slice(0, 3));
+      setTestimonials(depoimentosValidos.slice(0, 3));
     };
-    fetchDepoimentos();
+    fetchTestimonials();
   });
 
   return (
     <div className={styles.Container}>
-      <div className={styles.DepoimentosTitle}>
+      <div className={styles.TestimonialsTitle}>
         <h3>
           Depoimentos <span> dos nossos clientes </span>{' '}
         </h3>
         <Heart />
       </div>
-      <div className={styles.Depoimentos}>
+      <div className={styles.Testimonials}>
         {depoimentos.map((doc) => (
-          <div key={doc.idDocumento} className={styles.Depoimento}>
-            <div className={styles.TitleDepoimento}>
+          <div key={doc.idDocumento} className={styles.Testimonial}>
+            <div className={styles.TitleTestimonial}>
               <h1>{doc.nomeCliente + ','}</h1>
               <h2>{doc.cidadeCliente + ', ' + doc.estadoCliente}</h2>
             </div>
-            <div className={styles.DescDepoimento}>
+            <div className={styles.DescTestimonial}>
               <p>{doc.descricao}</p>
             </div>
-            <div className={styles.notaDepoimento}>
-              {Array.from({ length: doc.nota }).map((_, index) => (
+            <div className={styles.scoreTestimonial}>
+              {Array.from({ length: doc.score }).map((_, index) => (
                 <Star1 key={index} />
               ))}
             </div>
@@ -91,4 +91,4 @@ const Depoimentos = () => {
   );
 };
 
-export default Depoimentos;
+export default Testimonials;

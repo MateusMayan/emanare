@@ -7,7 +7,7 @@
   width: 100%;
 }
 
-.DepoimentosTitle {
+.TestimonialsTitle {
   margin-left: 240px;
   display: flex;
   gap: 8px;
@@ -23,13 +23,13 @@
   color: var(--r6);
 }
 
-.Depoimentos {
+.Testimonials {
   display: flex;
   justify-content: center;
   gap: 40px;
 }
 
-.Depoimento {
+.Testimonial {
   width: 420px;
   padding: 40px;
   display: flex;
@@ -40,16 +40,16 @@
   box-shadow: 0 2px 4px 0 #00000020, -2px -2px 5px 0 #00000010;
 }
 
-.Depoimento h1 {
+.Testimonial h1 {
   font: var(--font-1-l);
   color: var(--r9);
 }
 
-.Depoimento h2 {
+.Testimonial h2 {
   font: var(--font-2-m);
   color: var(--r9);
 }
 
-.DescDepoimento {
+.Testimonial {
   font: var(--font-2-s);
 }
