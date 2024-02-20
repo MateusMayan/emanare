@@ -119,3 +119,46 @@
   justify-content: center;
   font: var(--font-2-xs);
 }
+
+/* Media Queries */
+
+@media (max-width: 1320px) {
+  .header {
+    padding: 20px;
+  }
+
+  .headerRight {
+    gap: 16px;
+  }
+
+  .headerRightItem {
+    padding: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .header {
+    padding: 20px;
+  }
+
+  .headerRightItem p {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    flex-wrap: wrap;
+    padding-right: 40px;
+    justify-content: center;
+  }
+
+  .inputPesquisa input {
+    width: 180px;
+  }
+
+  .headerRight {
+    justify-content: center;
+    align-items: center;
+  }
+}
