@@ -9,6 +9,7 @@ import Home from './Home/Home';
 import ButtonWhatsapp from './Components/Buttons/ButtonWhatsapp';
 import ButtonScrollTop from './Components/Buttons/ButtonScrollTop';
 import { CartProvider } from './contexts/CartContext';
+import Footer from './Components/Footer/Footer';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
                 <Route path="/" element={<Home />} />
               </Routes>
             </main>
+            <Footer />
           </UserStorage>
         </CartProvider>
       </BrowserRouter>
