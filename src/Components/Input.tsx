@@ -9,6 +9,7 @@ interface InputProps {
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   error: string | null;
   onBlur: React.ChangeEventHandler<HTMLInputElement>;
+  placeholder: string | undefined;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -19,6 +20,7 @@ const Input: React.FC<InputProps> = ({
   onChange,
   error,
   onBlur,
+  placeholder,
 }) => {
   return (
     <div className={styles.wrapper}>
@@ -35,6 +37,7 @@ const Input: React.FC<InputProps> = ({
         value={value}
         onChange={onChange}
         onBlur={onBlur}
+        placeholder={placeholder}
       />
       {error && <p className={styles.error}>{error}</p>}
     </div>

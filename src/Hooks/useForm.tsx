@@ -19,7 +19,7 @@ const types = {
   },
 };
 
-const useForm = (type: FieldType | null) => {
+const useForm = (type?: FieldType | null) => {
   const [value, setValue] = React.useState('');
   const [error, setError] = React.useState<string | null>(null);
 
