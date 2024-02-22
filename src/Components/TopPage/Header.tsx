@@ -9,11 +9,15 @@ import { ReactComponent as BagSmile } from '../../Assets/icons/shopping-bag-smil
 import { useUser } from '../../contexts/UserContext';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext';
+import { useState } from 'react';
+import Input from '../Input';
+import useForm from '../../Hooks/useForm';
 
 const Header = () => {
   const { cart } = useCart();
   const { docId, uId, login, pedidos } = useUser();
-
+  const [inputPesquisa, setInputPesquisa] = useState(false);
+  const pesquisa = useForm();
   console.log(uId);
   console.log(docId);
   console.log(login);
@@ -26,7 +30,7 @@ const Header = () => {
     <header className={styles.header}>
       <div className={styles.headerLeft}>
         <Link to="/">
-          <Logo />
+          <Logo className={styles.Logo} />
         </Link>
         <div className={styles.inputPesquisa}>
           <input type="text" placeholder="Olá, o que está procurando hoje?" />
@@ -73,6 +77,25 @@ const Header = () => {
           <div className={styles.ellipse}>{totalItems}</div>
         </div>
       </nav>
+
+      <nav className={styles.HeaderMobile}>
+        <button
+          className={styles.ButtonPesquisa}
+          onClick={() => {
+            setInputPesquisa(!inputPesquisa);
+          }}
+        />
+      </nav>
+      {inputPesquisa && (
+        <div className={styles.inputPesquisaMobile}>
+          <Input
+            placeholder="O que está procurando?"
+            type="text"
+            name="pesquisa"
+            {...pesquisa}
+          />
+        </div>
+      )}
     </header>
   );
 };

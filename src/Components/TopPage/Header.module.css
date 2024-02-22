@@ -38,6 +38,14 @@
   font-size: 12px;
 }
 
+.inputPesquisaMobile {
+  display: none;
+}
+
+.ButtonPesquisa {
+  display: none;
+}
+
 .headerRight {
   font: var(--font-1-m);
   color: var(--r9);
@@ -148,17 +156,40 @@
 
 @media (max-width: 600px) {
   .header {
-    flex-wrap: wrap;
-    padding-right: 40px;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
   }
 
-  .inputPesquisa input {
-    width: 180px;
+  .Logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .inputPesquisa {
+    display: none;
+  }
+
+  .inputPesquisaMobile {
+    display: block;
+  }
+
+  .ButtonPesquisa {
+    display: flex;
+    background: url(../../Assets/icons/search.svg) no-repeat center;
+    padding: 15px;
+    border-radius: 50%;
+    border: var(--r7) 0.5px solid;
   }
 
   .headerRight {
     justify-content: center;
     align-items: center;
+  }
+
+  .headerRightItem:nth-child(1),
+  .headerRightItem:nth-child(2),
+  .headerRightItem:nth-child(3) {
+    display: none;
   }
 }
