@@ -166,6 +166,28 @@
     gap: 12px;
   }
 
+  .Accordion div {
+    background: var(--a2);
+  }
+
+  .DrawerItemTitle {
+    font: var(--font-1-m);
+    font-weight: 600;
+    color: var(--r9) !important;
+  }
+
+  .infoItemDrawer li {
+    list-style: none;
+    color: var(--r8);
+    font: var(--font-1-m);
+  }
+
+  .infoItemDrawer a {
+    text-decoration: none;
+    color: var(--r7);
+    font: var(--font-2-s);
+  }
+
   .MenuHamburger,
   .ButtonPesquisa {
     display: flex;
