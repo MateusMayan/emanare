@@ -6,6 +6,7 @@ import { ReactComponent as Heart } from '../../Assets/icons/suit-heart.svg';
 import { ReactComponent as Account } from '../../Assets/icons/single-neutral-actions.svg';
 import { ReactComponent as BagSad } from '../../Assets/icons/shopping-bag-sad.svg';
 import { ReactComponent as BagSmile } from '../../Assets/icons/shopping-bag-smile.svg';
+import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import { useUser } from '../../contexts/UserContext';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext';
@@ -29,6 +30,9 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.headerLeft}>
+        <button className={styles.MenuHamburger}>
+          <MenuRoundedIcon />
+        </button>
         <Link to="/">
           <Logo className={styles.Logo} />
         </Link>
@@ -78,14 +82,12 @@ const Header = () => {
         </div>
       </nav>
 
-      <nav className={styles.HeaderMobile}>
-        <button
-          className={styles.ButtonPesquisa}
-          onClick={() => {
-            setInputPesquisa(!inputPesquisa);
-          }}
-        />
-      </nav>
+      <button
+        className={styles.ButtonPesquisa}
+        onClick={() => {
+          setInputPesquisa(!inputPesquisa);
+        }}
+      />
       {inputPesquisa && (
         <div className={styles.inputPesquisaMobile}>
           <Input
