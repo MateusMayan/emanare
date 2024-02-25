@@ -184,6 +184,11 @@
     color: var(--r9) !important;
   }
 
+  .infoItemDrawer {
+    display: flex;
+    flex-direction: column;
+  }
+
   .infoItemDrawer li {
     list-style: none;
     color: var(--r8);

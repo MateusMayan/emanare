@@ -3,14 +3,7 @@ import { Link } from 'react-router-dom';
 import styles from './NavBarProdutos.module.css';
 const NavBarProdutos = () => {
   return (
-    <nav
-      style={{
-        display: 'flex',
-        gap: '40px',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
+    <nav className={styles.nav}>
       <Link className={styles.Link} to="/produtos/lancamento">
         Lançamentos
       </Link>
