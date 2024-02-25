@@ -12,11 +12,8 @@
   color: var(--r9);
 }
 
-.link {
-  font: var(--font-2-xs);
-  color: var(--r9);
-  text-decoration: none;
-  border: 1px solid var(--g10);
-  border-radius: 5px;
-  padding: 2px 5px;
+@media (max-width: 450px) {
+  .p {
+    font-size: 11px;
+  }
 }
