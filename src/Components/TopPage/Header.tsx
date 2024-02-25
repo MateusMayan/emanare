@@ -6,17 +6,24 @@ import { ReactComponent as Heart } from '../../Assets/icons/suit-heart.svg';
 import { ReactComponent as Account } from '../../Assets/icons/single-neutral-actions.svg';
 import { ReactComponent as BagSad } from '../../Assets/icons/shopping-bag-sad.svg';
 import { ReactComponent as BagSmile } from '../../Assets/icons/shopping-bag-smile.svg';
+import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import { useUser } from '../../contexts/UserContext';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext';
 import { useState } from 'react';
 import Input from '../Input';
 import useForm from '../../Hooks/useForm';
+import { Drawer } from '@mui/material';
+import Accordion from '@mui/material/Accordion';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import AccordionSummary from '@mui/material/AccordionSummary';
 
 const Header = () => {
   const { cart } = useCart();
-  const { docId, uId, login, pedidos } = useUser();
+  const { docId, uId, login, pedidos, setLogin } = useUser();
   const [inputPesquisa, setInputPesquisa] = useState(false);
+  const [menuHamburger, setMenuHamburger] = useState(false);
+  const [accordion, setAccordion] = useState<string | false>(false);
   const pesquisa = useForm();
   console.log(uId);
   console.log(docId);
@@ -25,10 +32,116 @@ const Header = () => {
   console.log(cart);
 
   const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+  // Função do Accordion selecionado
+
+  const handleChange =
+    (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+      setAccordion(isExpanded ? panel : false);
+    };
 
   return (
     <header className={styles.header}>
+      <div className={styles.Drawer}>
+        {
+          <Drawer
+            className={styles.Drawer}
+            anchor="left"
+            open={menuHamburger}
+            onClose={() => setMenuHamburger(!menuHamburger)}
+          >
+            <Accordion
+              className={styles.Accordion}
+              expanded={accordion === 'panel1'}
+              onChange={handleChange('panel1')}
+            >
+              <AccordionSummary className={styles.DrawerItemTitle}>
+                Atendimento
+              </AccordionSummary>
+              <AccordionDetails>
+                <ul className={styles.infoItemDrawer}>
+                  <Link to="tel:+5571986479532">
+                    <li>Telefone:</li>
+                    (71) 9740-6285
+                  </Link>
+
+                  <Link
+                    to="https://wa.me/message/MHZETPHCJYARJ1"
+                    target="blank"
+                  >
+                    <li>Whatsapp:</li>
+                    (71) 9740-6285
+                  </Link>
+
+                  <Link to="mailto:lojaemanarecristais@gmail.com">
+                    <li>E-mail:</li>
+                    lojaemanarecristais@gmail.com
+                  </Link>
+                </ul>
+              </AccordionDetails>
+            </Accordion>
+
+            <Accordion
+              expanded={accordion === 'panel2'}
+              onChange={handleChange('panel2')}
+              className={styles.Accordion}
+            >
+              <AccordionSummary className={styles.DrawerItemTitle}>
+                Minha Conta
+              </AccordionSummary>
+              <AccordionDetails>
+                <ul className={styles.infoItemDrawer}>
+                  {login ? (
+                    <li style={{ fontWeight: 600 }}>Olá, {login.nome}</li>
+                  ) : (
+                    <li>Olá, Visitante</li>
+                  )}
+                  <Link
+                    to="/conta/pedidos/"
+                    onClick={() => {
+                      setMenuHamburger(false);
+                    }}
+                  >
+                    Meus Pedidos
+                  </Link>
+                  <br />
+                  <Link
+                    to="/conta/pedidos-modal onClick={() => {
+                      setMenuHamburger(false);
+                    }}"
+                  >
+                    Acompanhar Pedido
+                  </Link>
+                  <br />
+                  {login ? null : <Link to="/conta/login">Entrar</Link>} <br />
+                  {login ? null : (
+                    <Link
+                      style={{ textDecoration: 'underline' }}
+                      to="/conta/login"
+                      onClick={() => setMenuHamburger(false)}
+                    >
+                      Novo aqui? Cadastre-se
+                    </Link>
+                  )}
+                  {login && setLogin ? (
+                    <li onClick={() => setLogin(null)}>Sair</li>
+                  ) : null}
+                </ul>
+              </AccordionDetails>
+            </Accordion>
+          </Drawer>
+        }
+      </div>
       <div className={styles.headerLeft}>
+        {/* Menu Hamburguer Mobile */}
+        <button
+          className={styles.MenuHamburger}
+          onClick={() => {
+            setMenuHamburger(!menuHamburger);
+          }}
+        >
+          <MenuRoundedIcon />
+        </button>
+        {/* Logo e inputPesquisa */}
         <Link to="/">
           <Logo className={styles.Logo} />
         </Link>
@@ -38,6 +151,7 @@ const Header = () => {
         </div>
       </div>
 
+      {/* Informações versão Desk e Tablet */}
       <nav className={styles.headerRight}>
         <div className={styles.headerRightItem}>
           <PatchQuestion />
@@ -66,6 +180,7 @@ const Header = () => {
             {login ? <li>Olá, {login.nome}</li> : <li>Olá, Visitante</li>}
             <Link to="/conta/pedidos/">Meus Pedidos</Link>
             <Link to="/conta/pedidos-modal">Acompanhar Pedido</Link>
+            <br />
             {login ? null : <Link to="/conta/login">Entrar</Link>}
             {login ? null : (
               <Link to="/conta/login">Novo aqui? Cadastre-se</Link>
@@ -78,14 +193,12 @@ const Header = () => {
         </div>
       </nav>
 
-      <nav className={styles.HeaderMobile}>
-        <button
-          className={styles.ButtonPesquisa}
-          onClick={() => {
-            setInputPesquisa(!inputPesquisa);
-          }}
-        />
-      </nav>
+      <button
+        className={styles.ButtonPesquisa}
+        onClick={() => {
+          setInputPesquisa(!inputPesquisa);
+        }}
+      />
       {inputPesquisa && (
         <div className={styles.inputPesquisaMobile}>
           <Input

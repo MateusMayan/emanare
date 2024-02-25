@@ -12,11 +12,12 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
 interface UserContextType {
   docId: string | null;
   uId: string | null;
-  login: any; // Você deve definir o tipo correto para login
-  pedidos: any; // Você deve definir o tipo correto para pedidos
+  login: any;
+  pedidos: any;
   loading: boolean | null;
   error: string | null;
-  children: ReactNode | null; // Adicione a propriedade children ao tipo do contexto
+  children: ReactNode | null;
+  setLogin: Function | null;
 }
 
 export const useUser = () => useContext(UserContext);
@@ -29,6 +30,7 @@ export const UserContext = createContext<UserContextType>({
   loading: false,
   error: null,
   children: null,
+  setLogin: null,
 });
 
 export const UserStorage: React.FC<{ children: ReactNode }> = ({
@@ -101,6 +103,7 @@ export const UserStorage: React.FC<{ children: ReactNode }> = ({
         loading,
         error,
         children,
+        setLogin,
       }}
     >
       {children}

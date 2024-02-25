@@ -9,6 +9,11 @@
   z-index: 1000;
 }
 
+.MenuHamburger,
+.ButtonPesquisa {
+  display: none;
+}
+
 .headerLeft,
 .headerRight {
   display: inline-flex;
@@ -161,9 +166,46 @@
     gap: 12px;
   }
 
-  .Logo {
-    width: 60px;
-    height: 60px;
+  .Drawer {
+    background: #00000090;
+  }
+
+  .Accordion div {
+    background: var(--a2);
+  }
+
+  .Accordion {
+    border: 1px solid var(--r5);
+  }
+
+  .DrawerItemTitle {
+    font: var(--font-1-m);
+    font-weight: 600;
+    color: var(--r9) !important;
+  }
+
+  .infoItemDrawer li {
+    list-style: none;
+    color: var(--r8);
+    font: var(--font-1-m);
+  }
+
+  .infoItemDrawer a {
+    text-decoration: none;
+    color: var(--r7);
+    font: var(--font-2-s);
+  }
+
+  .MenuHamburger,
+  .ButtonPesquisa {
+    display: flex;
+  }
+
+  .MenuHamburger {
+    background: #fff;
+    border: 1px solid var(--r5);
+    border-radius: 5px;
+    padding: 5px;
   }
 
   .inputPesquisa {
@@ -179,7 +221,7 @@
     background: url(../../Assets/icons/search.svg) no-repeat center;
     padding: 15px;
     border-radius: 50%;
-    border: var(--r7) 0.5px solid;
+    border: var(--r5) 1px solid;
   }
 
   .headerRight {
