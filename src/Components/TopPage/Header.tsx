@@ -103,7 +103,7 @@ const Header = () => {
                   >
                     Meus Pedidos
                   </Link>
-                  <br />
+
                   <Link
                     to="/conta/pedidos-modal onClick={() => {
                       setMenuHamburger(false);
@@ -111,8 +111,8 @@ const Header = () => {
                   >
                     Acompanhar Pedido
                   </Link>
-                  <br />
-                  {login ? null : <Link to="/conta/login">Entrar</Link>} <br />
+
+                  {login ? null : <Link to="/conta/login">Entrar</Link>}
                   {login ? null : (
                     <Link
                       style={{ textDecoration: 'underline' }}
@@ -123,8 +123,71 @@ const Header = () => {
                     </Link>
                   )}
                   {login && setLogin ? (
-                    <li onClick={() => setLogin(null)}>Sair</li>
+                    <li
+                      onClick={() => {
+                        setLogin(null);
+                        setMenuHamburger(false);
+                      }}
+                    >
+                      Sair
+                    </li>
                   ) : null}
+                </ul>
+              </AccordionDetails>
+            </Accordion>
+
+            <Accordion
+              expanded={accordion === 'panel3'}
+              onChange={handleChange('panel3')}
+              className={styles.Accordion}
+            >
+              <AccordionSummary className={styles.DrawerItemTitle}>
+                Produtos
+              </AccordionSummary>
+              <AccordionDetails>
+                <ul className={styles.infoItemDrawer}>
+                  <Link
+                    className={styles.Link}
+                    to="/produtos/lancamento"
+                    onClick={() => setMenuHamburger(false)}
+                  >
+                    Lançamentos
+                  </Link>
+                  <Link
+                    className={styles.Link}
+                    to="/produtos/signos"
+                    onClick={() => setMenuHamburger(false)}
+                  >
+                    Signos
+                  </Link>
+                  <Link
+                    className={styles.Link}
+                    to="/produtos/acessorios"
+                    onClick={() => setMenuHamburger(false)}
+                  >
+                    Acessórios
+                  </Link>
+                  <Link
+                    className={styles.Link}
+                    to="/produtos/kits"
+                    onClick={() => setMenuHamburger(false)}
+                  >
+                    Kits
+                  </Link>
+                  <Link
+                    className={styles.Link}
+                    to="/produtos/pedras-naturais"
+                    onClick={() => setMenuHamburger(false)}
+                  >
+                    Pedras Naturais
+                  </Link>
+                  <Link
+                    className={styles.Link}
+                    to="/produtos/o-que-deseja"
+                    onClick={() => setMenuHamburger(false)}
+                  >
+                    O que deseja?
+                  </Link>
                 </ul>
               </AccordionDetails>
             </Accordion>
