@@ -1,3 +1,13 @@
-# E-Commerce Emanare 
+# Emanare 
 
-Projeto de e-commerce pensado por mim e ele surgiu da necessidade de encontrar novas formas de venda e captação de clientes para a loja de minha esposa e também de um desejo de criar um projeto que fosse me desafiar e vivenciar problemas mais complexos em um projeto real. 
+Nesse projeto desenvolvido por mim com React + Typescript e através do Firebase pude utilizar banco de dados e realizar autenticação de usuários, além de lidar com a lógica para implementar funçõees integradas ao Firebase.
+Na parte de UX/UI pude desenvolver o protótipo de alta fidelidade no Figma.
+
+
+### Tecnologias Utilizadas:
+
+1. React
+2. Typescript
+3. Firebase
+4. Figma
+5. Material UI
