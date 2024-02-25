@@ -50,6 +50,7 @@ const Header = () => {
             onClose={() => setMenuHamburger(!menuHamburger)}
           >
             <Accordion
+              className={styles.Accordion}
               expanded={accordion === 'panel1'}
               onChange={handleChange('panel1')}
             >
@@ -82,6 +83,7 @@ const Header = () => {
             <Accordion
               expanded={accordion === 'panel2'}
               onChange={handleChange('panel2')}
+              className={styles.Accordion}
             >
               <AccordionSummary className={styles.DrawerItemTitle}>
                 Minha Conta
@@ -121,7 +123,7 @@ const Header = () => {
                     </Link>
                   )}
                   {login && setLogin ? (
-                    <p onClick={() => setLogin(null)}>Sair</p>
+                    <li onClick={() => setLogin(null)}>Sair</li>
                   ) : null}
                 </ul>
               </AccordionDetails>

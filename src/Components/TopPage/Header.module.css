@@ -166,8 +166,16 @@
     gap: 12px;
   }
 
+  .Drawer {
+    background: #00000090;
+  }
+
   .Accordion div {
     background: var(--a2);
+  }
+
+  .Accordion {
+    border: 1px solid var(--r5);
   }
 
   .DrawerItemTitle {
