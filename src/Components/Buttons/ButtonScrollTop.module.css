@@ -13,6 +13,7 @@
   border: 0;
   cursor: pointer;
   background: var(--w);
+  z-index: 1000;
 }
 
 .Button:before {
@@ -42,7 +43,15 @@
   border-radius: 50%;
 }
 
-.Button svg {
-  width: 32px;
-  height: 32px;
+@media (max-width: 1050px) {
+  .Button {
+    right: 60px;
+  }
+}
+
+@media (max-width: 850px) {
+  .Button {
+    width: 40px;
+    height: 40px;
+  }
 }

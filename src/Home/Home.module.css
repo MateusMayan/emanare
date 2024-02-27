@@ -13,7 +13,7 @@
 }
 
 .diferenciais svg {
-  height: 60px;
+  min-height: 60px;
   min-width: 60px;
 }
 
@@ -34,4 +34,35 @@
   justify-content: center;
   align-items: center;
   border-radius: 10px;
+}
+
+/*  Media Queries  */
+@media (max-width: 1350px) {
+  .itensMaisVendidos {
+    gap: 20px;
+  }
+
+  .itensMaisVendidos a {
+    width: 250px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .diferenciais {
+    height: 200px;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 940px) {
+  .diferenciais {
+    display: none;
+  }
+}
+
+@media (max-width: 800px) {
+  .itensMaisVendidos {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }

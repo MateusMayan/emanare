@@ -18,3 +18,10 @@
 .diferencialIcons {
   height: 60px;
 }
+
+@media (max-width: 1000px) {
+  .diferencial {
+    flex-direction: column;
+    text-align: center;
+  }
+}

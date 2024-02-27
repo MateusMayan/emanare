@@ -90,7 +90,14 @@
   right: -20px;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 1050px) {
+  .carousel {
+    width: 900px;
+    height: 400px;
+  }
+}
+
+@media (max-width: 900px) {
   .carousel {
     width: 700px;
     height: 400px;
