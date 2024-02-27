@@ -93,20 +93,18 @@
 @media (max-width: 1050px) {
   .carousel {
     width: 900px;
-    height: 400px;
   }
 }
 
 @media (max-width: 900px) {
   .carousel {
     width: 700px;
-    height: 400px;
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 700px) {
   .carousel {
-    width: 350px;
+    width: 550px;
     height: 200px;
   }
   .title {
@@ -131,7 +129,7 @@
   }
 }
 
-@media (max-width: 350px) {
+@media (max-width: 500px) {
   .carousel {
     width: 300px;
     height: 200px;
