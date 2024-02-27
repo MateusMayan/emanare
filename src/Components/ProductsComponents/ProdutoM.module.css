@@ -16,7 +16,6 @@
 .Produtos {
   display: flex;
   flex-direction: row;
-  width: 1160px;
   gap: 40px;
   margin: auto;
 }
@@ -123,4 +122,47 @@
 
 .amount button {
   height: 30px;
+}
+
+.Container::-webkit-scrollbar {
+  display: block;
+  height: 12px;
+  background-color: var(--a5);
+  border-radius: 3px;
+}
+
+.Container::-webkit-scrollbar-thumb {
+  background-color: var(--r5);
+  border-radius: 5px;
+}
+
+/*  Media Queries */
+@media (max-width: 1050px) {
+  .titleSection {
+    position: sticky;
+    margin: 0;
+    left: 0px;
+  }
+
+  .Container {
+    overflow-x: auto;
+  }
+  .product {
+    width: 320px;
+  }
+  .Produtos {
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 700px) {
+  .product {
+    width: 250px;
+  }
+}
+
+@media (max-width: 400px) {
+  .product {
+    width: 220px;
+  }
 }
