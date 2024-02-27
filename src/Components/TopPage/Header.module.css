@@ -6,7 +6,7 @@
   position: sticky;
   top: 0;
   background: var(--w);
-  z-index: 1000;
+  z-index: 1001;
 }
 
 .MenuHamburger,
@@ -138,6 +138,8 @@
 @media (max-width: 1320px) {
   .header {
     padding: 20px;
+    position: sticky;
+    top: 0;
   }
 
   .headerRight {
