@@ -4,7 +4,8 @@
   gap: 60px;
   padding: 60px;
   background-color: var(--a5);
-  width: 100%;
+  width: 100vw;
+  overflow: hidden;
 }
 
 .TestimonialsTitle {
@@ -37,6 +38,7 @@
   background: var(--r1);
   border-radius: 10px;
   box-shadow: 0 2px 4px 0 #00000020, -2px -2px 5px 0 #00000010;
+  font: var(--font-2-s);
 }
 
 .Testimonial h1 {
@@ -49,6 +51,47 @@
   color: var(--r9);
 }
 
-.Testimonial {
-  font: var(--font-2-s);
+@media (max-width: 700px) {
+  .Testimonials {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 500px) {
+  .TestimonialsTitle {
+    position: sticky;
+    left: 0;
+    gap: 12px;
+  }
+
+  .TestimonialsTitle svg {
+    width: 32px;
+  }
+
+  .Container {
+    overflow: auto;
+    padding: 40px;
+  }
+
+  .Container h3 {
+    font: var(--font-1-l);
+    font-size: 20px;
+  }
+
+  .Testimonials {
+    flex-wrap: nowrap;
+    margin: auto;
+  }
+
+  .Testimonial {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 300px) {
+  .Testimonial {
+    padding: 20px;
+    font: var(--font-2-xs);
+    max-width: 250px;
+  }
 }
