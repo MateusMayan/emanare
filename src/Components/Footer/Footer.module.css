@@ -1,8 +1,9 @@
 .Footer {
   display: flex;
-  justify-content: center;
   gap: 130px;
   padding: 60px;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .Footer h4 {
@@ -31,4 +32,25 @@
   display: flex;
   gap: 8px;
   align-items: center;
+}
+
+@media (max-width: 1400px) {
+  .Footer a {
+    font-size: 16px;
+  }
+  .DoubleItem a {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 550px) {
+  .Footer {
+    gap: 40px;
+    text-align: center;
+    justify-content: center;
+  }
+  .DoubleItem {
+    text-align: center;
+    justify-content: center;
+  }
 }
