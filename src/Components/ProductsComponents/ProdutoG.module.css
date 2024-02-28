@@ -15,7 +15,6 @@
 
 .Produtos {
   display: grid;
-  width: 100vw;
   gap: 40px;
   margin: auto;
   grid-auto-flow: column;
@@ -149,6 +148,11 @@
 }
 
 /*  Media Queries */
+@media (max-width: 1600px) {
+  .Produtos {
+    width: 100vw;
+  }
+}
 @media (max-width: 1050px) {
   .titleSection {
     position: sticky;
