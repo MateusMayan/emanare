@@ -162,6 +162,7 @@
 
   .Produtos {
     grid-auto-columns: 320px;
+    width: 80vw;
   }
 }
 
