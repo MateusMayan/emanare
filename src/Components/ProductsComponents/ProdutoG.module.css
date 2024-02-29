@@ -15,12 +15,12 @@
 
 .Produtos {
   display: grid;
-  width: 100vw;
   gap: 40px;
   margin: auto;
   grid-auto-flow: column;
   grid-auto-columns: 360px;
   overflow-x: auto;
+  overflow-y: hidden;
   grid-template-columns: unset;
   grid-template-rows: unset;
 }
@@ -81,7 +81,7 @@
 .modal {
   position: absolute;
   width: 100%;
-  height: 25%;
+  height: 30%;
   display: none;
 }
 
@@ -149,6 +149,11 @@
 }
 
 /*  Media Queries */
+@media (max-width: 1600px) {
+  .Produtos {
+    width: 100vw;
+  }
+}
 @media (max-width: 1050px) {
   .titleSection {
     position: sticky;
@@ -158,6 +163,7 @@
 
   .Produtos {
     grid-auto-columns: 320px;
+    width: 80vw;
   }
 }
 

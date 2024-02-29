@@ -243,10 +243,15 @@ const Header = () => {
             {login ? <li>Olá, {login.nome}</li> : <li>Olá, Visitante</li>}
             <Link to="/conta/pedidos/">Meus Pedidos</Link>
             <Link to="/conta/pedidos-modal">Acompanhar Pedido</Link>
+            <button onClick={() => (setLogin ? setLogin(null) : null)}>
+              Sair
+            </button>
             <br />
-            {login ? null : <Link to="/conta/login">Entrar</Link>}
             {login ? null : (
-              <Link to="/conta/login">Novo aqui? Cadastre-se</Link>
+              <>
+                <Link to="/conta/login">Entrar</Link>
+                <Link to="/conta/login">Novo aqui? Cadastre-se</Link>
+              </>
             )}
           </ul>
         </div>

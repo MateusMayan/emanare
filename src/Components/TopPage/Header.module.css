@@ -83,6 +83,15 @@
   border-radius: 5px;
 }
 
+#infoConta button {
+  border: none;
+  background: transparent;
+  text-align: left;
+  color: var(--r7);
+  cursor: pointer;
+  font: var(--font-2-xs);
+}
+
 #infoAtendimento a,
 #infoConta a {
   text-decoration: none;
@@ -115,7 +124,8 @@
 }
 
 #infoConta a:hover,
-#infoAtendimento a:hover {
+#infoAtendimento a:hover,
+#infoConta button:hover {
   background-color: var(--a3);
   cursor: pointer;
   font-weight: 600;
