@@ -81,7 +81,7 @@
 .modal {
   position: absolute;
   width: 100%;
-  height: 30%;
+  height: 25%;
   display: none;
 }
 
@@ -170,6 +170,9 @@
 @media (max-width: 750px) {
   .ProdutoGImagem {
     height: 320px;
+  }
+  .modal {
+    height: 30%;
   }
 }
 
