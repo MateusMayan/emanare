@@ -56,3 +56,7 @@
   --font-2-s: 400 16px/24px Quicksand, sans-serif;
   --font-2-xs: 400 14px/20px Quicksand, sans-serif;
 }
+
+main {
+  min-height: 100vh;
+}

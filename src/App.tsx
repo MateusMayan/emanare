@@ -10,6 +10,7 @@ import ButtonWhatsapp from './Components/Buttons/ButtonWhatsapp';
 import ButtonScrollTop from './Components/Buttons/ButtonScrollTop';
 import { CartProvider } from './contexts/CartContext';
 import Footer from './Components/Footer/Footer';
+import Login from './Login/Login';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <main className="appBody">
               <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/login/*" element={<Login />} />
               </Routes>
             </main>
             <Footer />
