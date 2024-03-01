@@ -11,7 +11,16 @@ import {
   signInWithEmailAndPassword,
 } from 'firebase/auth';
 import { auth, db } from '../FirebaseConfig';
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  query,
+  setDoc,
+  where,
+} from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 
 interface UserContextType {
   docId: string | null;
@@ -52,8 +61,7 @@ export const UserStorage: React.FC<{ children: ReactNode }> = ({
   const [pedidos, setPedidos] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const clientRef = collection(db, 'cliente');
-
+  const navigate = useNavigate();
   // Functions
   const fazerLogin = async (username: string, password: string) => {
     try {
@@ -65,6 +73,7 @@ export const UserStorage: React.FC<{ children: ReactNode }> = ({
       const user = userCredential.user;
       if (user) {
         setUId(user.uid);
+        navigate(`/`);
       }
     } catch (error: any) {
       console.error('Error during login:', error.message);
@@ -74,22 +83,45 @@ export const UserStorage: React.FC<{ children: ReactNode }> = ({
     }
   };
 
-  const cadastrarUsuario = async (email: string, password: string) => {
-    const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-        setError(`${errorMessage}`);
-      });
+  const cadastrarUsuario = async (
+    name: string,
+    email: string,
+    password: string,
+  ) => {
+    try {
+      setLoading(true);
+      const auth = await getAuth();
+      createUserWithEmailAndPassword(auth, email, password).then(
+        async (userCredential) => {
+          const userUID = userCredential.user.uid;
+          const userRef = doc(db, 'cliente', userUID);
+          const userData = {
+            nome: name,
+            email: email,
+            idCliente: userUID,
+          };
+          const userDoc = await getDoc(userRef);
+
+          if (userDoc.exists()) {
+            const userDocData = userDoc.data();
+            setLogin(userDocData);
+            navigate('/');
+          }
+          await setDoc(userRef, userData);
+        },
+      );
+    } catch (error: Error | any) {
+      const errorMessage = error.message;
+      setError(`${errorMessage}`);
+    } finally {
+      setLoading(false);
+    }
   };
 
   // React Function
   useEffect(() => {
     const getUserInfo = async () => {
+      const clientRef = collection(db, 'cliente');
       const queryVar = query(clientRef, where('idCliente', '==', uId));
       const querySnapshot = await getDocs(queryVar);
       querySnapshot.forEach(async (doc) => {
@@ -98,7 +130,7 @@ export const UserStorage: React.FC<{ children: ReactNode }> = ({
       });
     };
     getUserInfo();
-  }, [uId, clientRef]);
+  }, [uId]);
 
   useEffect(() => {
     const getRequestInfo = async () => {

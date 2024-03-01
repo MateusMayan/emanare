@@ -19,7 +19,7 @@ const LoginRegister = () => {
 
     if (usernameReg.validate() && passwordReg.validate()) {
       if (cadastrarUsuario) {
-        cadastrarUsuario(emailReg.value, passwordReg.value);
+        cadastrarUsuario(usernameReg.value, emailReg.value, passwordReg.value);
       }
     }
   }

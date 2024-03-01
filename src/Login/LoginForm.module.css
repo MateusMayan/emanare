@@ -1,6 +1,7 @@
 .Container {
   margin: 60px auto;
   max-width: 600px;
+  padding: 20px;
 }
 
 .title {
