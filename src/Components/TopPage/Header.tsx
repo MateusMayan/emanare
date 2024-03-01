@@ -95,24 +95,27 @@ const Header = () => {
                   ) : (
                     <li>Olá, Visitante</li>
                   )}
-                  <Link
-                    to="/conta/pedidos/"
-                    onClick={() => {
-                      setMenuHamburger(false);
-                    }}
-                  >
-                    Meus Pedidos
-                  </Link>
+                  {login && (
+                    <>
+                      <Link
+                        to="/conta/pedidos/"
+                        onClick={() => {
+                          setMenuHamburger(false);
+                        }}
+                      >
+                        Meus Pedidos
+                      </Link>
 
-                  <Link
-                    to="/account/pedidos-modal"
-                    onClick={() => {
-                      setMenuHamburger(false);
-                    }}
-                  >
-                    Acompanhar Pedido
-                  </Link>
-
+                      <Link
+                        to="/account/pedidos-modal"
+                        onClick={() => {
+                          setMenuHamburger(false);
+                        }}
+                      >
+                        Acompanhar Pedido
+                      </Link>
+                    </>
+                  )}
                   {login ? null : <Link to="/account/login">Entrar</Link>}
                   {login ? null : (
                     <Link

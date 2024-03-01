@@ -62,6 +62,7 @@ export const UserStorage: React.FC<{ children: ReactNode }> = ({
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
+
   // Functions
   const fazerLogin = async (username: string, password: string) => {
     try {
@@ -71,10 +72,8 @@ export const UserStorage: React.FC<{ children: ReactNode }> = ({
         password,
       );
       const user = userCredential.user;
-      if (user) {
-        setUId(user.uid);
-        navigate(`/`);
-      }
+      setUId(user.uid);
+      navigate(`/`);
     } catch (error: any) {
       console.error('Error during login:', error.message);
       setError(error.message);
@@ -100,14 +99,10 @@ export const UserStorage: React.FC<{ children: ReactNode }> = ({
             email: email,
             idCliente: userUID,
           };
-          const userDoc = await getDoc(userRef);
-
-          if (userDoc.exists()) {
-            const userDocData = userDoc.data();
-            setLogin(userDocData);
-            navigate('/');
-          }
           await setDoc(userRef, userData);
+          const userDoc = await getDoc(userRef);
+          userDoc && setLogin(userDoc.data());
+          navigate('/');
         },
       );
     } catch (error: Error | any) {
