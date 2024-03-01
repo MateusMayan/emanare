@@ -26,7 +26,7 @@ function App() {
             <main className="appBody">
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/login/*" element={<Login />} />
+                <Route path="/account/*" element={<Login />} />
               </Routes>
             </main>
             <Footer />

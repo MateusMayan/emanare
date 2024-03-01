@@ -5,9 +5,22 @@ import React, {
   ReactNode,
   useContext,
 } from 'react';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithEmailAndPassword,
+} from 'firebase/auth';
 import { auth, db } from '../FirebaseConfig';
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  query,
+  setDoc,
+  where,
+} from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 
 interface UserContextType {
   docId: string | null;
@@ -20,6 +33,7 @@ interface UserContextType {
   setLogin: Function | null;
   setUId: Function | null;
   fazerLogin: Function | null;
+  cadastrarUsuario: Function | null;
 }
 
 export const useUser = () => useContext(UserContext);
@@ -35,6 +49,7 @@ export const UserContext = createContext<UserContextType>({
   setLogin: null,
   setUId: null,
   fazerLogin: null,
+  cadastrarUsuario: null,
 });
 
 export const UserStorage: React.FC<{ children: ReactNode }> = ({
@@ -46,7 +61,9 @@ export const UserStorage: React.FC<{ children: ReactNode }> = ({
   const [pedidos, setPedidos] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
+  // Functions
   const fazerLogin = async (username: string, password: string) => {
     try {
       const userCredential = await signInWithEmailAndPassword(
@@ -55,9 +72,8 @@ export const UserStorage: React.FC<{ children: ReactNode }> = ({
         password,
       );
       const user = userCredential.user;
-      if (user) {
-        setUId(user.uid);
-      }
+      setUId(user.uid);
+      navigate(`/`);
     } catch (error: any) {
       console.error('Error during login:', error.message);
       setError(error.message);
@@ -66,6 +82,38 @@ export const UserStorage: React.FC<{ children: ReactNode }> = ({
     }
   };
 
+  const cadastrarUsuario = async (
+    name: string,
+    email: string,
+    password: string,
+  ) => {
+    try {
+      setLoading(true);
+      const auth = await getAuth();
+      createUserWithEmailAndPassword(auth, email, password).then(
+        async (userCredential) => {
+          const userUID = userCredential.user.uid;
+          const userRef = doc(db, 'cliente', userUID);
+          const userData = {
+            nome: name,
+            email: email,
+            idCliente: userUID,
+          };
+          await setDoc(userRef, userData);
+          const userDoc = await getDoc(userRef);
+          userDoc && setLogin(userDoc.data());
+          navigate('/');
+        },
+      );
+    } catch (error: Error | any) {
+      const errorMessage = error.message;
+      setError(`${errorMessage}`);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // React Function
   useEffect(() => {
     const getUserInfo = async () => {
       const clientRef = collection(db, 'cliente');
@@ -106,6 +154,7 @@ export const UserStorage: React.FC<{ children: ReactNode }> = ({
         setLogin,
         setUId,
         fazerLogin,
+        cadastrarUsuario,
       }}
     >
       {children}
