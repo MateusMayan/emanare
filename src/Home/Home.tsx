@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import ProdutosM from '../Components/ProductsComponents/ProdutosM';
 import ProdutosG from '../Components/ProductsComponents/ProdutosG';
 import Depoimentos from './Testimonials';
+import Head from '../Components/Helper/Head';
 
 const Home = () => {
   const slides = [
@@ -33,6 +34,10 @@ const Home = () => {
 
   return (
     <div className={styles.container}>
+      <Head
+        title="Página Inicial"
+        description="Loja de materiais esótéricos, transformar sua energia"
+      />{' '}
       <Carousel slides={slides} />
       <div className={styles.diferenciais}>
         <Diferencial

@@ -1,0 +1,29 @@
+.Container {
+  display: flex;
+  justify-content: center;
+  gap: 120px;
+  margin: 60px;
+}
+
+.title {
+  font: var(--font-1-xl);
+  color: var(--r5);
+  margin-bottom: 40px;
+}
+
+.Container label {
+  font: var(--font-2-m);
+  color: var(--r9);
+}
+
+.Container input {
+  margin-bottom: 20px;
+}
+
+.Container Button {
+  margin-bottom: 20px;
+}
+
+.cadastro p {
+  font: var(--font-2-m);
+}

@@ -10,7 +10,7 @@ import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import { useUser } from '../../contexts/UserContext';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Input from '../Input';
 import useForm from '../../Hooks/useForm';
 import { Drawer } from '@mui/material';
@@ -20,7 +20,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 
 const Header = () => {
   const { cart } = useCart();
-  const { docId, uId, login, pedidos, setLogin } = useUser();
+  const { docId, uId, setUId, login, pedidos, setLogin } = useUser();
   const [inputPesquisa, setInputPesquisa] = useState(false);
   const [menuHamburger, setMenuHamburger] = useState(false);
   const [accordion, setAccordion] = useState<string | false>(false);
@@ -32,8 +32,8 @@ const Header = () => {
   console.log(cart);
 
   const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-  // Função do Accordion selecionado
 
+  // Função do Accordion selecionado
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setAccordion(isExpanded ? panel : false);
@@ -122,10 +122,11 @@ const Header = () => {
                       Novo aqui? Cadastre-se
                     </Link>
                   )}
-                  {login && setLogin ? (
+                  {login && setLogin && setUId ? (
                     <li
                       onClick={() => {
                         setLogin(null);
+                        setUId(null);
                         setMenuHamburger(false);
                       }}
                     >
@@ -241,16 +242,27 @@ const Header = () => {
           <p id={styles.minhaConta}>Minha Conta</p>
           <ul id={styles.infoConta}>
             {login ? <li>Olá, {login.nome}</li> : <li>Olá, Visitante</li>}
-            <Link to="/conta/pedidos/">Meus Pedidos</Link>
-            <Link to="/conta/pedidos-modal">Acompanhar Pedido</Link>
-            <button onClick={() => (setLogin ? setLogin(null) : null)}>
-              Sair
-            </button>
-            <br />
+            {login ? (
+              <>
+                <Link to="/conta/pedidos/">Meus Pedidos</Link>
+                <Link to="/conta/pedidos-modal">Acompanhar Pedido</Link>
+                <button
+                  onClick={() => {
+                    if (setLogin && setUId) {
+                      setLogin(null);
+                      setUId(null);
+                    }
+                  }}
+                >
+                  Sair
+                </button>
+              </>
+            ) : null}
+
             {login ? null : (
               <>
-                <Link to="/conta/login">Entrar</Link>
-                <Link to="/conta/login">Novo aqui? Cadastre-se</Link>
+                <Link to="/login">Entrar</Link>
+                <Link to="/login">Novo aqui? Cadastre-se</Link>
               </>
             )}
           </ul>
