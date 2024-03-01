@@ -2,7 +2,7 @@ import React from 'react';
 
 interface HeadProps {
   title: string;
-  description: string;
+  description?: string;
 }
 
 const Head: React.FC<HeadProps> = (props) => {

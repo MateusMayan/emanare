@@ -18,6 +18,8 @@ interface UserContextType {
   error: string | null;
   children: ReactNode | null;
   setLogin: Function | null;
+  setUId: Function | null;
+  fazerLogin: Function | null;
 }
 
 export const useUser = () => useContext(UserContext);
@@ -31,6 +33,8 @@ export const UserContext = createContext<UserContextType>({
   error: null,
   children: null,
   setLogin: null,
+  setUId: null,
+  fazerLogin: null,
 });
 
 export const UserStorage: React.FC<{ children: ReactNode }> = ({
@@ -43,12 +47,12 @@ export const UserStorage: React.FC<{ children: ReactNode }> = ({
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
-  const fazerLogin = async () => {
+  const fazerLogin = async (username: string, password: string) => {
     try {
       const userCredential = await signInWithEmailAndPassword(
         auth,
-        'mateusmayan@icloud.com',
-        '123456',
+        username,
+        password,
       );
       const user = userCredential.user;
       if (user) {
@@ -89,10 +93,6 @@ export const UserStorage: React.FC<{ children: ReactNode }> = ({
     getRequestInfo();
   }, [login, docId]);
 
-  useEffect(() => {
-    fazerLogin();
-  }, []);
-
   return (
     <UserContext.Provider
       value={{
@@ -104,6 +104,8 @@ export const UserStorage: React.FC<{ children: ReactNode }> = ({
         error,
         children,
         setLogin,
+        setUId,
+        fazerLogin,
       }}
     >
       {children}

@@ -9,7 +9,7 @@ interface InputProps {
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   error: string | null;
   onBlur: React.ChangeEventHandler<HTMLInputElement>;
-  placeholder: string | undefined;
+  placeholder?: string | undefined;
 }
 
 const Input: React.FC<InputProps> = ({
