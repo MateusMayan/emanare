@@ -5,7 +5,11 @@ import React, {
   ReactNode,
   useContext,
 } from 'react';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithEmailAndPassword,
+} from 'firebase/auth';
 import { auth, db } from '../FirebaseConfig';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 
@@ -20,6 +24,7 @@ interface UserContextType {
   setLogin: Function | null;
   setUId: Function | null;
   fazerLogin: Function | null;
+  cadastrarUsuario: Function | null;
 }
 
 export const useUser = () => useContext(UserContext);
@@ -35,6 +40,7 @@ export const UserContext = createContext<UserContextType>({
   setLogin: null,
   setUId: null,
   fazerLogin: null,
+  cadastrarUsuario: null,
 });
 
 export const UserStorage: React.FC<{ children: ReactNode }> = ({
@@ -46,7 +52,9 @@ export const UserStorage: React.FC<{ children: ReactNode }> = ({
   const [pedidos, setPedidos] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const clientRef = collection(db, 'cliente');
 
+  // Functions
   const fazerLogin = async (username: string, password: string) => {
     try {
       const userCredential = await signInWithEmailAndPassword(
@@ -66,9 +74,22 @@ export const UserStorage: React.FC<{ children: ReactNode }> = ({
     }
   };
 
+  const cadastrarUsuario = async (email: string, password: string) => {
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        setError(`${errorMessage}`);
+      });
+  };
+
+  // React Function
   useEffect(() => {
     const getUserInfo = async () => {
-      const clientRef = collection(db, 'cliente');
       const queryVar = query(clientRef, where('idCliente', '==', uId));
       const querySnapshot = await getDocs(queryVar);
       querySnapshot.forEach(async (doc) => {
@@ -77,7 +98,7 @@ export const UserStorage: React.FC<{ children: ReactNode }> = ({
       });
     };
     getUserInfo();
-  }, [uId]);
+  }, [uId, clientRef]);
 
   useEffect(() => {
     const getRequestInfo = async () => {
@@ -106,6 +127,7 @@ export const UserStorage: React.FC<{ children: ReactNode }> = ({
         setLogin,
         setUId,
         fazerLogin,
+        cadastrarUsuario,
       }}
     >
       {children}

@@ -1,4 +1,4 @@
-.Container {
+.cadastro {
   margin: 60px auto;
   max-width: 600px;
 }
@@ -9,16 +9,16 @@
   margin-bottom: 40px;
 }
 
-.Container label {
+.cadastro label {
   font: var(--font-2-m);
   color: var(--r9);
 }
 
-.Container input {
+.cadastro input {
   margin-bottom: 20px;
 }
 
-.Container Button {
+.cadastro Button {
   margin-bottom: 20px;
   font-weight: 600;
 }

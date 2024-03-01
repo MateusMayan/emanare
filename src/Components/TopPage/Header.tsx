@@ -105,18 +105,19 @@ const Header = () => {
                   </Link>
 
                   <Link
-                    to="/conta/pedidos-modal onClick={() => {
+                    to="/account/pedidos-modal"
+                    onClick={() => {
                       setMenuHamburger(false);
-                    }}"
+                    }}
                   >
                     Acompanhar Pedido
                   </Link>
 
-                  {login ? null : <Link to="/conta/login">Entrar</Link>}
+                  {login ? null : <Link to="/account/login">Entrar</Link>}
                   {login ? null : (
                     <Link
                       style={{ textDecoration: 'underline' }}
-                      to="/conta/login"
+                      to="/account/login"
                       onClick={() => setMenuHamburger(false)}
                     >
                       Novo aqui? Cadastre-se
@@ -244,8 +245,8 @@ const Header = () => {
             {login ? <li>Olá, {login.nome}</li> : <li>Olá, Visitante</li>}
             {login ? (
               <>
-                <Link to="/conta/pedidos/">Meus Pedidos</Link>
-                <Link to="/conta/pedidos-modal">Acompanhar Pedido</Link>
+                <Link to="/account/pedidos/">Meus Pedidos</Link>
+                <Link to="/account/pedidos-modal">Acompanhar Pedido</Link>
                 <button
                   onClick={() => {
                     if (setLogin && setUId) {
@@ -261,8 +262,8 @@ const Header = () => {
 
             {login ? null : (
               <>
-                <Link to="/login">Entrar</Link>
-                <Link to="/login">Novo aqui? Cadastre-se</Link>
+                <Link to="/account/login">Entrar</Link>
+                <Link to="/account/register/">Novo aqui? Cadastre-se</Link>
               </>
             )}
           </ul>

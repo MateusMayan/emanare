@@ -8,9 +8,9 @@ import useForm from '../Hooks/useForm';
 import { UserContext } from '../contexts/UserContext';
 import Error from '../Components/Helper/Error';
 const LoginForm = () => {
+  //LoginForm
   const username = useForm();
   const password = useForm();
-
   const { fazerLogin, error, loading } = React.useContext(UserContext);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -26,11 +26,7 @@ const LoginForm = () => {
   return (
     <section className={styles.Container}>
       <Head title="Login" />
-      <div className={styles.cadastro}>
-        <h2 className={styles.title}>Cadastre-se</h2>
-        <p>Ainda não possui conta? Cadastre-se no site.</p>
-        <Link to="/login/create-account">Cadastro</Link>
-      </div>
+
       <div className={styles.LoginForm}>
         <h1 className={styles.title}>Login</h1>
         <form className={styles.form} onSubmit={handleSubmit}>
