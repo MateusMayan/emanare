@@ -27,7 +27,8 @@ const LoginRegister = () => {
     <div className={styles.cadastro}>
       <h2 className={styles.title}>Ainda não possui conta?</h2>
       <form onSubmit={handleRegister}>
-        <Input label="Usuário" type="text" name="usernameReg" {...emailReg} />
+        <Input label="Nome" type="text" name="usernameReg" {...usernameReg} />
+        <Input label="Email" type="text" name="emailReg" {...emailReg} />
         <Input
           label="Senha"
           type="password"
