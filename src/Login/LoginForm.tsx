@@ -17,8 +17,12 @@ const LoginForm = () => {
     event.preventDefault();
 
     if (username.validate() && password.validate()) {
-      if (fazerLogin) {
+      if (fazerLogin instanceof Function) {
         fazerLogin(username.value, password.value);
+      } else {
+        console.error(
+          'A função fazerLogin não está definida ou não é uma função.',
+        );
       }
     }
   }
