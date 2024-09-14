@@ -98,7 +98,7 @@ const Header = () => {
                   {login && (
                     <>
                       <Link
-                        to="/conta/pedidos/"
+                        to="/account/orders/"
                         onClick={() => {
                           setMenuHamburger(false);
                         }}
@@ -107,7 +107,7 @@ const Header = () => {
                       </Link>
 
                       <Link
-                        to="/account/pedidos-modal"
+                        to="/account/orders-modal"
                         onClick={() => {
                           setMenuHamburger(false);
                         }}
