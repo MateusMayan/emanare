@@ -73,6 +73,7 @@ export const UserStorage: React.FC<{ children: ReactNode }> = ({
       );
       const user = userCredential.user;
       setUId(user.uid);
+      console.log(uId);
       navigate(`/`);
     } catch (error: any) {
       console.error('Error during login:', error.message);
@@ -128,9 +129,9 @@ export const UserStorage: React.FC<{ children: ReactNode }> = ({
   }, [uId]);
 
   useEffect(() => {
-    const getRequestInfo = async () => {
-      const RequestRef = collection(db, 'pedidos');
-      const queryVar = query(RequestRef);
+    const getOrdersInfo = async () => {
+      const OrdersRef = collection(db, 'pedidos');
+      const queryVar = query(OrdersRef);
       const querySnapshot = await getDocs(queryVar);
       querySnapshot.forEach(async (doc) => {
         if (doc.data().idCliente.id === docId) {
@@ -138,7 +139,7 @@ export const UserStorage: React.FC<{ children: ReactNode }> = ({
         }
       });
     };
-    getRequestInfo();
+    getOrdersInfo();
   }, [login, docId]);
 
   return (
